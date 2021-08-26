@@ -7,6 +7,8 @@ import { MenudenavegacionComponent } from './componetes/menudenavegacion/menuden
 import { InicioComponent } from './componetes/inicio/inicio.component';
 import { LoginComponent } from './componetes/login/login.component';
 import { PrincipalComponent } from './componetes/principal/principal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PrincipalComponent } from './componetes/principal/principal.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

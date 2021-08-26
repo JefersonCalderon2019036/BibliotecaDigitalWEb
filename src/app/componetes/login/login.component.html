@@ -1,1 +1,21 @@
-<p>login works!</p>
+
+<body>
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="contenedor-login">
+        <div class="login">
+            <img src="https://p.kindpng.com/picc/s/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png" alt="">
+            <h3>Bienvenidos</h3>
+            <hr>
+            <h5>Correo electronico</h5>
+            <input type="text" placeholder="Correo electronico" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico">
+            <h5>Contraseña</h5>
+            <input type="password" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" [(ngModel)]="ModeloUsuario.contrasena">
+            <div class="buttom-group">
+                <button type="submit" (click) = "getToken()" class="btn btn-success" type="submit">Iniciar Sesión</button>
+                <button type="submit" (click) = "cancelar()"  class="btn btn-danger" type="submit">Cancelar</button>
+            </div>
+        </div>
+        <img src="https://learnconstantly1.files.wordpress.com/2019/01/d6e84dc50121d53f3d39dba7b00dc28f.jpg" alt="">
+    </div>
+    <br>
+</body>
