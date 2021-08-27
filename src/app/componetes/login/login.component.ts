@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       if (result.isConfirmed) {
         Swal.fire(
           'Cancelar!',
-          'Exelete su operación fu cancelada',
+          'Excelete su operación fue cancelada',
           'success'
         )
         this._router.navigate(['/inicio'])
