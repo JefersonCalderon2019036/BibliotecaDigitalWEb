@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 export class LoginComponent implements OnInit {
   public ModeloUsuario: Usuario;
   public token: any;
-  identidad: any;
+  public identidad: any;
 
   constructor(
     private _usuarioService: UsuarioService,
@@ -29,32 +29,38 @@ export class LoginComponent implements OnInit {
     this._usuarioService.login(this.ModeloUsuario).subscribe(
       (response) => {
         this.token = response.token;
-        console.log("Bienvenido")
-        console.log(this.token)
+        this.identidad = response.usuariosEncontrado;
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('username', this.identidad.usuario)
+        localStorage.setItem('rol', this.identidad.rol)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: "Bienvenido",
+          showConfirmButton: false,
+          timer: 2000
+        })
+        this._router.navigate(['/principal'])
       },
       (error) => {
         console.log(<any>error);
+        let textoalaer = <any>error.error.mensaje
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: textoalaer,
+          showConfirmButton: false,
+          timer: 3000
+        })
       }
     );
   }
   
   cancelar(){
     Swal.fire({
-      title: 'Estas seguro que quiere cancelar la operación?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Cancelar!',
-          'Excelete su operación fue cancelada',
-          'success'
-        )
-        this._router.navigate(['/inicio'])
-      }
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No tienes una cuenta, comunicate con un administrador para poder crearte una cuenta',
     })
   }
 }

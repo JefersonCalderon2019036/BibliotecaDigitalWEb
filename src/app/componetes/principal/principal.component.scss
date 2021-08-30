@@ -1,0 +1,76 @@
+.carousel-caption{
+    width: 40%;
+}
+
+.carousel-caption h5, p, hr, h3{
+    text-align: left;
+}
+
+.carousel-caption h5{
+    font-family: 'Lobster', cursive;
+    text-transform: capitalize;
+    font-size: 60px;
+}
+
+.carousel-caption h3{
+    font-size: 25px;
+}
+
+.carousel-caption p{
+    font-size: small;
+}
+
+.contenedor-general{
+    color: black;
+    margin-top: -5%;
+}
+
+.contenedor-general h5{
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+.primer-titulo{
+    display: flex;
+}
+
+.card{
+    margin-top: 2%;
+    border-color: black;
+    background-color: black;
+    color: white;   
+    box-shadow: 4px 5px 8px #efb810;
+}
+
+.card-body h5{
+    font-size:medium;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width: 980px){
+    .carousel-caption{
+        width: 70%;
+    }
+
+    .carousel-caption h5{
+        font-family: 'Lobster', cursive;
+        text-transform: capitalize;
+        font-size: 30px;
+    }
+    
+    .carousel-caption h3{
+        font-size: 20px;
+    }
+
+    .card{
+        margin-top: 2%;
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .primer-titulo{
+        display:inline-block;
+    }
+}
