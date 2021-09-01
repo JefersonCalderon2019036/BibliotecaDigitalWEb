@@ -27,7 +27,7 @@
 
 .contenedor-general h5{
     margin-left: 5%;
-    margin-bottom: 2%;
+    margin-top: 2%;
     font-family: 'Lobster', cursive;
     font-size: 30px;
 }
@@ -47,6 +47,59 @@
 .card-body h5{
     font-size:medium;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-body .btn{
+    width: 40%;
+    border-radius: 5px;
+    background-color: #efb810;
+    color: black;
+    border-color: black;
+    margin-top: 2%;
+    margin-left: 30%;
+}
+
+.offcanvas-header, .offcanvas-body{
+    background-color: black;
+}
+
+.banner-secundario{
+    background-color: black;
+}
+
+.redes-sociales{
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+.redes-sociales .bx{
+    margin-left: 2%;
+}
+
+.banner-secundario h3{
+    color: #a9a9a9;
+    text-transform: capitalize;
+}
+
+.banner-secundario h3{
+    color: #a9a9a9;
+    text-transform: capitalize;
+}
+
+.banner-secundario p{
+    width: 40%; 
+    margin-left: 5%;
+}
+
+.pie-de-pagina{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.pie-de-pagina a{
+    margin: auto;
 }
 
 @media screen and (max-width: 980px){
@@ -72,5 +125,14 @@
 
     .primer-titulo{
         display:inline-block;
+    }
+    
+    .banner-secundario h3{
+        margin-bottom: 7%;
+    }
+
+    .banner-secundario p{
+        width: 80%;
+        margin-left: 5%;
     }
 }

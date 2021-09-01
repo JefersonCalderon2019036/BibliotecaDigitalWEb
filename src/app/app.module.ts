@@ -9,6 +9,11 @@ import { LoginComponent } from './componetes/login/login.component';
 import { PrincipalComponent } from './componetes/principal/principal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DetallesdocumentoComponent } from './componetes/detallesdocumento/detallesdocumento.component';
+import { UsuariosComponent } from './componetes/usuarios/usuarios.component';
+import { LibrosComponent } from './componetes/libros/libros.component';
+import { RevistasComponent } from './componetes/revistas/revistas.component';
+import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { FormsModule } from '@angular/forms';
     MenudenavegacionComponent,
     InicioComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    DetallesdocumentoComponent,
+    UsuariosComponent,
+    LibrosComponent,
+    RevistasComponent,
+    MiperfilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetallesdocumentoComponent } from './componetes/detallesdocumento/detallesdocumento.component';
 import { InicioComponent } from './componetes/inicio/inicio.component';
+import { LibrosComponent } from './componetes/libros/libros.component';
 import { LoginComponent } from './componetes/login/login.component';
 import { MenudenavegacionComponent } from './componetes/menudenavegacion/menudenavegacion.component';
+import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
 import { PrincipalComponent } from './componetes/principal/principal.component';
+import { RevistasComponent } from './componetes/revistas/revistas.component';
+import { UsuariosComponent } from './componetes/usuarios/usuarios.component';
 
 const routes: Routes = [
   {path: "menudenavegacion", component: MenudenavegacionComponent},
   {path: "inicio", component: InicioComponent},
   {path: "iniciarsesion", component: LoginComponent},
   {path: "principal", component: PrincipalComponent},
+  {path: "detallesdocumento/:iddocumento", component: DetallesdocumentoComponent},
+  {path: "Usuarios", component: UsuariosComponent},
+  {path: "Libros", component: LibrosComponent},
+  {path: "Revistas", component: RevistasComponent},
+  {path: "MiPerfil", component: MiperfilComponent},
   {path: "**", component: InicioComponent}
 ];
 

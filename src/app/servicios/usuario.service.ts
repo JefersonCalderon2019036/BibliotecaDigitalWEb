@@ -24,6 +24,16 @@ export class UsuarioService {
     return this._http.post(this.url + 'login', params, {headers: this.Encabezado});
   }
 
+  //funcion para obtener todos los usuarios
+  getUsuariosAdminASC(): Observable<any>{
+    return this._http.get(this.url+"ListarTodosLosUsuariosAscendente/"+this.getIdUser(),{headers: this.EncabezadoToken})
+  }
+
+  //funcion para obtener todos los usuarios
+  getUsuariosAdminDESC(): Observable<any>{
+    return this._http.get(this.url+"ListarTodosLosUsuariosDescendente/"+this.getIdUser(),{headers: this.EncabezadoToken})
+  }
+
   //funcion para obtener el token
   getToken(){
     var token2 = localStorage.getItem('token');
@@ -49,6 +59,17 @@ export class UsuarioService {
   //funcion para obtener el username
   getusername(){
     var identidad2 = localStorage.getItem('username');
+    if(identidad2 != 'undefined'){
+      this.identidad = identidad2
+    }else{
+      this.identidad = null;
+    }
+    return this.identidad;
+  }
+
+  //funcion para obtener el username
+  getIdUser(){
+    var identidad2 = localStorage.getItem('iduser');
     if(identidad2 != 'undefined'){
       this.identidad = identidad2
     }else{

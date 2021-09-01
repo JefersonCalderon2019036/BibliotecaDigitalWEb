@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Libros } from 'src/app/modelos/libros.module';
 import { LibrosServices } from 'src/app/servicios/libros.services';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss'],
-  providers: [LibrosServices]
+  providers: [LibrosServices,UsuarioService]
 })
 export class PrincipalComponent implements OnInit {
   DocumentosMasVistos: any;
@@ -16,9 +18,12 @@ export class PrincipalComponent implements OnInit {
   LibrosEncontrados: any;
   resutladosdelabusqueda: any;
   TodosLosLibros: any;
+  SoloUnDocumento: any;
+  TodaLasRevistasd: any;
 
   constructor(
-    private _LibrosServices: LibrosServices
+    private _LibrosServices: LibrosServices,
+    private _router: Router
   ) {
     this.ModeloLibros = new Libros("","","","","","",0,0,[],[],"","","",0)
    }
@@ -26,6 +31,8 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.getLibrosMasVistos()
     this.getTodosLosLibros()
+    this.getTodosLosLibros()
+    this.getTodasLasRevistas()
     this.bloqueodedatosporbusqueda = true;
     this.resutladosdelabusqueda = false;
   }
@@ -47,7 +54,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   getUnDocumento(id: any){
-    console.log(id)
+    this._router.navigate(['/detallesdocumento',id])
   }
 
   BusquedaPalabrasClave(){
@@ -78,6 +85,14 @@ export class PrincipalComponent implements OnInit {
     this._LibrosServices.getTodosLosLibros().subscribe(
       res => {
         this.TodosLosLibros = res;
+      }
+    )
+  }
+
+  getTodasLasRevistas(){
+    this._LibrosServices.getTodasLasRevistas().subscribe(
+      res =>{
+        this.TodaLasRevistasd = res;
       }
     )
   }

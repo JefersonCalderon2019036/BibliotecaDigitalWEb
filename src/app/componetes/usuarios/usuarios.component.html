@@ -1,0 +1,99 @@
+<div class="background">
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="combox">
+        <h5>Dirección de la tabla:</h5>
+        <select class="form-select" [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+            <option value="1">Ascendente</option>
+            <option value="2">Descendente</option>
+          </select>
+        
+          <h5>Carnet:</h5>
+          <select class="form-select">
+            <option *ngFor="let LASCUser of ListaDeUsuariosAsc" [value]="LASCUser.carnet">{{LASCUser.carnet}}</option>
+          </select>
+
+          <h5>Agregar Usuario:</h5>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class='bx bxs-plus-circle bx-sm'></i>
+                Agregar
+            </button>
+    </div>
+
+    <table class="table" *ngIf="bloquededatos2">
+        <thead>
+          <tr>
+            <th scope="col">Carnet</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Correo electronico</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let LASCUser of ListaDeUsuariosAsc">
+            <th scope="row">{{LASCUser.carnet}}</th>
+            <td>{{LASCUser.nombre}}</td>
+            <td>{{LASCUser.apellido}}</td>
+            <td>{{LASCUser.usuario}}</td>
+            <td>{{LASCUser.correoelectronico}}</td>
+            <td>{{LASCUser.rol}}</td>
+            <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-success">Ver más</button>
+              </div></td>
+          </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table" *ngIf="bloquedeverdatos">
+        <thead>
+          <tr>
+            <th scope="col">Carnet</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Correo electronico</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let LDesUser of ListaDeUsuarioDes">
+            <th scope="row">{{LDesUser.carnet}}</th>
+            <td>{{LDesUser.nombre}}</td>
+            <td>{{LDesUser.apellido}}</td>
+            <td>{{LDesUser.usuario}}</td>
+            <td>{{LDesUser.correoelectronico}}</td>
+            <td>{{LDesUser.rol}}</td>
+            <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-success">Ver más</button>
+              </div></td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.token = response.token;
         this.identidad = response.usuariosEncontrado;
         localStorage.setItem('token', this.token);
+        localStorage.setItem('iduser', this.identidad._id)
         localStorage.setItem('username', this.identidad.usuario)
         localStorage.setItem('rol', this.identidad.rol)
         Swal.fire({

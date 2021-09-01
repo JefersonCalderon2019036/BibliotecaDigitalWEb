@@ -25,11 +25,11 @@
               {{username}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Tu perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/MiPerfil" routerLinkActive="active">Tu perfil</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Usuarios</a></li>
-              <li><a class="dropdown-item" href="#">Libros</a></li>
-              <li><a class="dropdown-item" href="#">Revistas</a></li>
+              <li><a class="dropdown-item" routerLink="/Usuarios" routerLinkActive="active">Usuarios</a></li>
+              <li><a class="dropdown-item" routerLink="/Libros" routerLinkActive="active">Libros</a></li>
+              <li><a class="dropdown-item" routerLink="/Revistas" routerLinkActive="active">Revistas</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" (click)="Cerrarsesion()"><i class='bx bx-door-open bx-sm' style='color:#f5f5f5' ></i>Salir</a></li>
             </ul>

@@ -1,0 +1,26 @@
+<div class="background">
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="container">
+        <div class="row">
+        <div class="col">
+            <img src={{LibroEncontrado.imagen}} class="card-img-top">
+        </div>
+        <div class="col">
+            <div class="datos">
+                
+                <h5>Autor: <a>{{LibroEncontrado.autor}}</a></h5>
+                <h5>Nombre: <a>{{LibroEncontrado.nombre}}</a></h5>
+                <h5>Edición: <a>{{LibroEncontrado.edicion}}</a></h5>
+                <h5>Ejemplares: <a>{{LibroEncontrado.ejemplares}}</a></h5>
+                <h5 *ngIf="bloqueportipo">Frecuencia actual: <a>{{LibroEncontrado.frecuenciaactual}}</a></h5>
+                <h5>Descripción: <a>{{LibroEncontrado.descripcion}}</a></h5>
+                <div class="grupo-de-botones">
+                    <button type="button" class="btn btn-success">Prestar Documento</button>
+                    <button type="button" class="btn btn-dark">Devolver Documento</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <br>
+</div>

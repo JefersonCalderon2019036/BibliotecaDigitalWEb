@@ -34,6 +34,15 @@ export class LibrosServices {
       return this._http.get(this.url+"ObtenerTodosLosLibros",{headers: this.EncabezadoToken})
     }
 
+    getTodasLasRevistas(): Observable<any>{
+      return this._http.get(this.url+"ObtenerTodasLasRevistas", {headers: this.EncabezadoToken})
+    }
+
+    //funcion para obtener un solo docuemento
+    getSoloUnDocumento(id: any): Observable<any>{
+      return this._http.get(this.url+"ObtenerUnSoloLibro/"+id, {headers: this.EncabezadoToken})
+    }
+
     //funcion para obtener el token
     getToken(){
         var token2 = localStorage.getItem('token');
