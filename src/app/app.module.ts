@@ -32,7 +32,7 @@ import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

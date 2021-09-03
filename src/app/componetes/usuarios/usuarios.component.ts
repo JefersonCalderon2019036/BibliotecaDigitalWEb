@@ -16,6 +16,7 @@ export class UsuariosComponent implements OnInit {
   bloquedeverdatos: any;
   ListaDeUsuarioDes: any;
   bloquededatos2: any;
+  archivoInput: any;
 
   constructor(
     private _usuarioService: UsuarioService,
@@ -56,5 +57,11 @@ export class UsuariosComponent implements OnInit {
     }else{
       this.getUsuariosDescendentes()
     }
+  }
+
+  subirImagenInput(event: any){
+
+    this.archivoInput = event.target.files[0];
+    console.log(this.archivoInput);
   }
 }
