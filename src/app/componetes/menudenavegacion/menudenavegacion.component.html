@@ -26,11 +26,12 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" routerLink="/MiPerfil" routerLinkActive="active">Tu perfil</a></li>
+              <li><a class="dropdown-item" routerLinkActive="active">Prestamos</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="/Usuarios" routerLinkActive="active">Usuarios</a></li>
-              <li><a class="dropdown-item" routerLink="/Libros" routerLinkActive="active">Libros</a></li>
-              <li><a class="dropdown-item" routerLink="/Revistas" routerLinkActive="active">Revistas</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/Usuarios" *ngIf="verificacionbloqueorol" routerLinkActive="active">Usuarios</a></li>
+              <li><a class="dropdown-item" routerLink="/Libros" *ngIf="verificacionbloqueorol" routerLinkActive="active">Libros</a></li>
+              <li><a class="dropdown-item" routerLink="/Revistas" *ngIf="verificacionbloqueorol" routerLinkActive="active">Revistas</a></li>
+              <li><hr class="dropdown-divider" *ngIf="verificacionbloqueorol"></li>
               <li><a class="dropdown-item" (click)="Cerrarsesion()"><i class='bx bx-door-open bx-sm' style='color:#f5f5f5' ></i>Salir</a></li>
             </ul>
           </li>

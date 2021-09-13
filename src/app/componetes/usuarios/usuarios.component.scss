@@ -1,5 +1,6 @@
 .background{
-    background: linear-gradient(#efb810, white);
+    background-image: url(https://images.unsplash.com/photo-1502700807168-484a3e7889d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1353&q=80);
+    background-size: cover;
 }
 
 .table{
@@ -20,7 +21,7 @@
 .combox h5{
     margin-top: 4%;
     margin-left: 5%;
-    color:black;
+    color:white;
 }
 
 .combox .btn{
@@ -39,4 +40,111 @@
 }
 .modal-body, .modal-footer{
     background-color: black;
+    color: white;
+}
+
+.offcanvas-header, .offcanvas-body, .offcanvas{
+    background-color: black;
+    color: white;
+}
+
+.mb-3 .form-select{
+    width: 95%;
+}
+
+.offcanvas-body img{
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 50%;
+    margin-bottom: 2%;
+}
+
+.offcanvas-body h5, p{
+    width:90%;
+    margin-left: 5%;
+    display: flex;
+}
+
+.offcanvas-body li{
+    text-align: center;
+}
+
+.offcanvas-body h5 h5{
+    font-size: x-large;
+}
+
+.offcanvas-body .btn-group{
+    width:90%;
+}
+
+.offcanvas-body .btn-group .btn{
+    margin-left: 5%;
+}
+
+.overflow-auto{
+    width: 90%;
+    height: 615px;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    overflow: auto;
+    background-color: rgba(255, 245, 245, 0.747);
+
+}
+
+.overflow-auto::-webkit-scrollbar{
+    width: 7px;
+    background: rgba(73, 73, 73, 0.5);
+}
+
+.overflow-auto::-webkit-scrollbar-thumb{
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.banner-secundario{
+    background-color: white;
+}
+
+.redes-sociales{
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+.redes-sociales .bx{
+    margin-left: 2%;
+}
+
+.banner-secundario h3{
+    color: black;
+    text-transform: capitalize;
+}
+
+.banner-secundario p{
+    width: 40%; 
+    margin-left: 5%;
+}
+
+.pie-de-pagina{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.pie-de-pagina a{
+    margin: auto;
+}
+
+@media screen and (max-width: 980px){
+
+    .banner-secundario h3{
+        margin-bottom: 7%;
+    }
+
+    .banner-secundario p{
+        width: 80%;
+        margin-left: 5%;
+    }
 }

@@ -14,6 +14,11 @@ import { UsuariosComponent } from './componetes/usuarios/usuarios.component';
 import { LibrosComponent } from './componetes/libros/libros.component';
 import { RevistasComponent } from './componetes/revistas/revistas.component';
 import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
+import { CommonModule } from '@angular/common';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,8 @@ import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    CommonModule,AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

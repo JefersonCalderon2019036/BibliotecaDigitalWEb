@@ -15,8 +15,8 @@
                 <h5 *ngIf="bloqueportipo">Frecuencia actual: <a>{{LibroEncontrado.frecuenciaactual}}</a></h5>
                 <h5>Descripción: <a>{{LibroEncontrado.descripcion}}</a></h5>
                 <div class="grupo-de-botones">
-                    <button type="button" class="btn btn-success">Prestar Documento</button>
-                    <button type="button" class="btn btn-dark">Devolver Documento</button>
+                    <button type="button" *ngIf="bloqueoprestamo" (click)="putPrestar()"  class="btn btn-success">Prestar Documento</button>
+                    <button type="button" *ngIf="bloqueoprestamo2" class="btn btn-dark">Devolver Documento</button>
                 </div>
             </div>
         </div>

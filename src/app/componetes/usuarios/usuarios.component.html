@@ -8,7 +8,8 @@
           </select>
         
           <h5>Carnet:</h5>
-          <select class="form-select">
+          <select class="form-select" name="carnet" #carnet="ngModel" [(ngModel)]="ModeloUsuario.carnet" (change)="Buscar()" >
+            <option value="0">0</option>
             <option *ngFor="let LASCUser of ListaDeUsuariosAsc" [value]="LASCUser.carnet">{{LASCUser.carnet}}</option>
           </select>
 
@@ -19,7 +20,8 @@
             </button>
     </div>
 
-    <table class="table" *ngIf="bloquededatos2">
+    <div class="overflow-auto" *ngIf="bloquededatos2">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Carnet</th>
@@ -40,16 +42,18 @@
             <td>{{LASCUser.correoelectronico}}</td>
             <td>{{LASCUser.rol}}</td>
             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-danger">Eliminar</button>
-                <button type="button" class="btn btn-warning">Editar</button>
-                <button type="button" class="btn btn-success">Ver más</button>
+                <button type="button" (click)="EliminarUsuario(LASCUser._id)"  class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(LASCUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
+                <button type="button" (click)="VerMas(LASCUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
               </div></td>
           </tr>
         </tbody>
     </table>
+    </div>
 
 
-    <table class="table" *ngIf="bloquedeverdatos">
+    <div class="overflow-auto" *ngIf="bloquedeverdatos">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Carnet</th>
@@ -70,13 +74,76 @@
             <td>{{LDesUser.correoelectronico}}</td>
             <td>{{LDesUser.rol}}</td>
             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-danger">Eliminar</button>
-                <button type="button" class="btn btn-warning">Editar</button>
-                <button type="button" class="btn btn-success">Ver más</button>
+                <button type="button" (click)="EliminarUsuario(LDesUser._id)" class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(LDesUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
+                <button type="button" (click)="VerMas(LDesUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
               </div></td>
           </tr>
         </tbody>
     </table>
+    </div>
+    
+
+    <div class="overflow-auto" *ngIf="bloqueoporbusqueda">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Carnet</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Correo electronico</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{busquedauser.carnet}}</th>
+            <td>{{busquedauser.nombre}}</td>
+            <td>{{busquedauser.apellido}}</td>
+            <td>{{busquedauser.usuario}}</td>
+            <td>{{busquedauser.correoelectronico}}</td>
+            <td>{{busquedauser.rol}}</td>
+            <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" (click)="EliminarUsuario(busquedauser._id)"  class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(busquedauser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
+                <button type="button" (click)="VerMas(busquedauser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
+              </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  <br>
+    <div class="banner-secundario">
+      <br style="margin-bottom: 5%;">
+      <h3 style="margin-left: 5%; margin-bottom: 3%;">Redes Sociales</h3>
+    
+      <div class="redes-sociales">
+        <i class='bx bxl-facebook-circle bx-tada bx-lg' style='color:black'  ></i>
+        <i class='bx bxl-twitter bx-tada bx-lg' style='color: black' ></i>
+        <i class='bx bxl-instagram-alt bx-tada bx-lg' style='color:black' ></i>
+        <i class='bx bxl-linkedin-square bx-tada bx-lg' style='color:black' ></i>
+        <i class='bx bxl-whatsapp bx-tada bx-lg' style='color:black' ></i>
+        <i class='bx bxl-google-plus bx-tada bx-lg' style='color:black' ></i>
+      </div>
+    
+      <hr style="color: black; width: 60%; margin-left: 5%; margin-top: 3%; margin-bottom: 3%;">
+      <p style="color:black;">
+        <i class='bx bx-copyright' style='color:black' ></i>
+        2021, Biblioteca Digital Web, mantiene todos los derechos de autor pertenecientes a cada uno de los libros y revistas
+        integrados a esta biblioteca, este proyecto es un trabajo en coloboración con el Centro Educativo Técnico Laboral "KINAL" y
+        el alumno en curso Jefferson Calderon.
+      </p>
+      <hr style="width: 90%; margin-left: 5%;">
+      <div class="pie-de-pagina" style="color:black;">
+        <a>Términos de servicio</a>
+        <a>Política de privacidad</a>
+        <a>Seguridad de la cuenta</a>
+      </div>
+      <br>
+    </div>
 </div>
 
 
@@ -86,40 +153,139 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Imagen</label>
-              <input accept="image/png,image/jpeg" (change)="subirImagenInput($event)" type="file" class="form-control">
-            </div>
-            <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Carnet</label>
-              <input type="number" class="form-control" id="exampleInputPassword1">
+              <input type="number" name="carnet" #carnet="ngModel" [(ngModel)]="ModeloUsuario.carnet"  class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="exampleInputPassword1">
+              <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloUsuario.nombre" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="exampleInputPassword1">
+              <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="ModeloUsuario.apellido"  class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Nombre de usuario</label>
-              <input type="text" class="form-control" id="exampleInputPassword1">
+              <input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="ModeloUsuario.usuario" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">correo electronico</label>
-              <input type="text" class="form-control" id="exampleInputPassword1">
+              <input type="text" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="ModeloUsuario.contrasena" class="form-control" id="exampleInputPassword1">
             </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Rol</label>
+              <select class="form-select" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol">
+                <option value="admin">Administrador</option>
+                <option value="estudiante">Estudiante</option>
+              </select>
+            </div>
+
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" (click)="AgregarUnUsuario()" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </div>
   </div>
 
+
+  <div class="offcanvas offcanvas-end" style="width: 30%;" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header" style="width: 100%;">
+      <h5 id="offcanvasRightLabel">Ver más</h5>
+      <i class='bx bxs-user-x bx-flashing bx-md' data-bs-dismiss="offcanvas" style='color:#ffffff'  ></i>
+    </div>
+    <div class="offcanvas-body" style="width: 100%;">
+      <h5>* Datos Personales:</h5>
+      <img src={{datosvermas.imagen}} alt="">
+      <hr>
+      <p>Carnet: {{datosvermas.carnet}}</p>
+      <hr>
+      <p>Nombre: {{datosvermas.nombre}}</p>
+      <hr>
+      <p>Apellido: {{datosvermas.apellido}}</p>
+      <hr>
+      <p>Nombre de usuario: {{datosvermas.Usuario}}</p>
+      <hr>
+      <p>Correo electronico: {{datosvermas.correoelectronico}}</p>
+      <hr>
+      <p>Rol: {{datosvermas.rol}}</p>
+      <hr>
+      <h5>* Prestamos:</h5>
+      <div *ngFor="let Puser of datosprestamosuser">
+        <li>{{Puser.nombre}}, {{Puser.autor}}, {{Puser.tipo}},{{Puser.estado}}, Fecha del prestamo: {{Puser.fechadesolicitud}} Fecha de devolución: {{Puser.fechadeentrega}} </li>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-start" style="width: 40%;" tabindex="-1" id="offcanvasEditar" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <i class='bx bxs-x-circle bx-md bx-spin' style='color:#ffffff'  data-bs-dismiss="offcanvas" ></i>
+   </div>
+    <div class="offcanvas-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <img src={{datosvermas.imagen}} alt="">
+            <hr>
+            <p>Carnet: {{datosvermas.carnet}}</p>
+            <hr>
+            <p>Nombre: {{datosvermas.nombre}}</p>
+            <hr>
+            <p>Apellido: {{datosvermas.apellido}}</p>
+            <hr>
+            <p>Nombre de usuario: {{datosvermas.Usuario}}</p>
+            <hr>
+            <p>Correo electronico: {{datosvermas.correoelectronico}}</p>
+            <hr>
+            <p>Rol: {{datosvermas.rol}}</p>
+          </div>
+          <div class="col">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">imagen</label>
+                <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloUsuario.imagen" class="form-control" id="exampleInputPassword1">
+                <div id="emailHelp" class="form-text">Solo puedes cambiar la imagen ingresando una nueva url.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nombre</label>
+                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloUsuario.nombre" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="ModeloUsuario.apellido"  class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nombre de usuario</label>
+                <input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="ModeloUsuario.usuario" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">correo electronico</label>
+                <input type="text" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico" class="form-control" id="exampleInputPassword1">
+              </div>
+  
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Rol</label>
+                <select class="form-select" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol">
+                  <option value="admin">Administrador</option>
+                  <option value="estudiante">Estudiante</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="btn-group" role="group" styles="margin-top: 5%;" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancelar</button>
+          <button type="button" class="btn btn-success" (click)="EditarUsuario()" data-bs-dismiss="offcanvas">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>

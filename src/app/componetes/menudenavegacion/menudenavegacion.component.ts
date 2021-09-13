@@ -15,6 +15,7 @@ export class MenudenavegacionComponent implements OnInit {
   username: any;
   verificaciondeltoken: any;
   verificaciondeltoken2: any;
+  verificacionbloqueorol: any;
 
 
   constructor(
@@ -27,10 +28,11 @@ export class MenudenavegacionComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.VerificacionDelToken2()
+    this.VerificacionDelToken()
+    this.VerificaciondelRol()
   }
 
-  VerificacionDelToken2(){
+  VerificacionDelToken(){
     if(this.token != null){
       if("" != this.rol){
         this.verificaciondeltoken = true;
@@ -42,6 +44,14 @@ export class MenudenavegacionComponent implements OnInit {
     }else{
       this.verificaciondeltoken = false;
       this.verificaciondeltoken2 = true;
+    }
+  }
+
+  VerificaciondelRol(){
+    if(this.rol == "admin"){
+      this.verificacionbloqueorol = true;
+    }else{
+      this.verificacionbloqueorol = false;
     }
   }
 
