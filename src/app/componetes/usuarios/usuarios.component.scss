@@ -38,7 +38,7 @@
     border-radius: 5px;
     border-color: white;
 }
-.modal-body, .modal-footer{
+.modal-header, .modal-body, .modal-footer{
     background-color: black;
     color: white;
 }
@@ -89,7 +89,7 @@
     margin-bottom: 5%;
     border-radius: 5px;
     overflow: auto;
-    background-color: rgba(255, 245, 245, 0.747);
+    background-color: rgb(255, 245, 245);
 
 }
 

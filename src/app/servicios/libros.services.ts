@@ -43,6 +43,23 @@ export class LibrosServices {
       return this._http.get(this.url+"ObtenerUnSoloLibro/"+id, {headers: this.EncabezadoToken})
     }
 
+    //funcion para agregar un nuevo libro
+    postAgregarUnNuevoLibro(datos: Libros): Observable<any>{
+      let params = JSON.stringify(datos);
+      return this._http.post(this.url+"AgregarUnNuevoLibro/"+this.getIdUser(), params, {headers: this.EncabezadoToken})
+    }
+
+    //funcion para eliminar un libro
+    DeleteUnLibro(id: any): Observable<any>{
+      return this._http.delete(this.url+"ELiminarUnLibro/"+this.getIdUser()+"/"+id, {headers: this.EncabezadoToken})
+    }
+
+    //funcion para editar un libros
+    PutEdtarUnLibro(id: any, datos: Libros): Observable<any>{
+      let params = JSON.stringify(datos);
+      return this._http.put(this.url+"EditarLibros/"+this.getIdUser()+"/"+id, params, {headers: this.EncabezadoToken})
+    }
+
     //funcion para obtener el token
     getToken(){
         var token2 = localStorage.getItem('token');
@@ -53,4 +70,15 @@ export class LibrosServices {
         }
         return this.token;
     }
+
+    //funcion para obtener el username
+  getIdUser(){
+    var identidad2 = localStorage.getItem('iduser');
+    if(identidad2 != 'undefined'){
+      this.identidad = identidad2
+    }else{
+      this.identidad = null;
+    }
+    return this.identidad;
+  }
 }

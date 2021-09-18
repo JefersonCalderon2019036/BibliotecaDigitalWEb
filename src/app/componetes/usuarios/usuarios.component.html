@@ -42,7 +42,7 @@
             <td>{{LASCUser.correoelectronico}}</td>
             <td>{{LASCUser.rol}}</td>
             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" (click)="EliminarUsuario(LASCUser._id)"  class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(LASCUser._id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
                 <button type="button" (click)="VerMas(LASCUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
                 <button type="button" (click)="VerMas(LASCUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
               </div></td>
@@ -74,7 +74,7 @@
             <td>{{LDesUser.correoelectronico}}</td>
             <td>{{LDesUser.rol}}</td>
             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" (click)="EliminarUsuario(LDesUser._id)" class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(LDesUser._id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
                 <button type="button" (click)="VerMas(LDesUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
                 <button type="button" (click)="VerMas(LDesUser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
               </div></td>
@@ -106,7 +106,7 @@
             <td>{{busquedauser.correoelectronico}}</td>
             <td>{{busquedauser.rol}}</td>
             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" (click)="EliminarUsuario(busquedauser._id)"  class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="VerMas(busquedauser._id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
                 <button type="button" (click)="VerMas(busquedauser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditar" class="btn btn-warning">Editar</button>
                 <button type="button" (click)="VerMas(busquedauser._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-success">Ver más</button>
               </div></td>
@@ -181,6 +181,7 @@
               <label for="exampleInputPassword1" class="form-label">Rol</label>
               <select class="form-select" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol">
                 <option value="admin">Administrador</option>
+                <option value="bibliotecario">Bibliotecario</option>
                 <option value="estudiante">Estudiante</option>
               </select>
             </div>
@@ -189,7 +190,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" (click)="AgregarUnUsuario()" class="btn btn-primary">Guardar</button>
+          <button type="button" (click)="AgregarUnUsuario()" data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </div>
@@ -217,71 +218,50 @@
       <hr>
       <p>Rol: {{datosvermas.rol}}</p>
       <hr>
-      <h5>* Prestamos:</h5>
-      <div *ngFor="let Puser of datosprestamosuser">
-        <li>{{Puser.nombre}}, {{Puser.autor}}, {{Puser.tipo}},{{Puser.estado}}, Fecha del prestamo: {{Puser.fechadesolicitud}} Fecha de devolución: {{Puser.fechadeentrega}} </li>
-      </div>
+      <button type="button" class="btn btn-success">Ver Historial de prestamos</button>
       <hr>
     </div>
   </div>
 
   <div class="offcanvas offcanvas-start" style="width: 40%;" tabindex="-1" id="offcanvasEditar" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar</h5>
       <i class='bx bxs-x-circle bx-md bx-spin' style='color:#ffffff'  data-bs-dismiss="offcanvas" ></i>
    </div>
     <div class="offcanvas-body">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <img src={{datosvermas.imagen}} alt="">
-            <hr>
-            <p>Carnet: {{datosvermas.carnet}}</p>
-            <hr>
-            <p>Nombre: {{datosvermas.nombre}}</p>
-            <hr>
-            <p>Apellido: {{datosvermas.apellido}}</p>
-            <hr>
-            <p>Nombre de usuario: {{datosvermas.Usuario}}</p>
-            <hr>
-            <p>Correo electronico: {{datosvermas.correoelectronico}}</p>
-            <hr>
-            <p>Rol: {{datosvermas.rol}}</p>
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">imagen</label>
+            <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloUsuario.imagen" class="form-control" id="exampleInputPassword1">
+            <div id="emailHelp" class="form-text">Solo puedes cambiar la imagen ingresando una nueva url.</div>
           </div>
-          <div class="col">
-            <form>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">imagen</label>
-                <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloUsuario.imagen" class="form-control" id="exampleInputPassword1">
-                <div id="emailHelp" class="form-text">Solo puedes cambiar la imagen ingresando una nueva url.</div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Nombre</label>
-                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloUsuario.nombre" class="form-control" id="exampleInputPassword1">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Apellido</label>
-                <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="ModeloUsuario.apellido"  class="form-control" id="exampleInputPassword1">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Nombre de usuario</label>
-                <input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="ModeloUsuario.usuario" class="form-control" id="exampleInputPassword1">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">correo electronico</label>
-                <input type="text" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico" class="form-control" id="exampleInputPassword1">
-              </div>
-  
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Rol</label>
-                <select class="form-select" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol">
-                  <option value="admin">Administrador</option>
-                  <option value="estudiante">Estudiante</option>
-                </select>
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre</label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloUsuario.nombre" class="form-control" id="exampleInputPassword1">
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido</label>
+            <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="ModeloUsuario.apellido"  class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre de usuario</label>
+            <input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="ModeloUsuario.usuario" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">correo electronico</label>
+            <input type="text" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico" class="form-control" id="exampleInputPassword1">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Rol</label>
+            <select class="form-select" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol">
+              <option value="admin">Administrador</option>
+              <option value="bibliotecario">Bibliotecario</option>
+              <option value="estudiante">Estudiante</option>
+            </select>
+          </div>
+        </form>
         <div class="btn-group" role="group" styles="margin-top: 5%;" aria-label="Basic mixed styles example">
           <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancelar</button>
           <button type="button" class="btn btn-success" (click)="EditarUsuario()" data-bs-dismiss="offcanvas">Actualizar</button>
@@ -289,3 +269,52 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+        <i class='bx bxs-x-circle bx-md bx-spin' style='color:#ffffff'  data-bs-dismiss="modal" ></i>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">imagen</label>
+            <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloUsuario.imagen" class="form-control" id="exampleInputPassword1">
+            <div id="emailHelp" class="form-text">Solo puedes cambiar la imagen ingresando una nueva url.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre</label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloUsuario.nombre" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido</label>
+            <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="ModeloUsuario.apellido"  class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre de usuario</label>
+            <input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="ModeloUsuario.usuario" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Correo electronico</label>
+            <input type="text" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="ModeloUsuario.correoelectronico" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="text" name="contrasena" #contrasena="ngModel" [(ngModel)]="ModeloUsuario.contrasena" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Rol</label>
+            <input type="text" name="rol" #rol="ngModel" [(ngModel)]="ModeloUsuario.rol" class="form-control" id="exampleInputPassword1">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="EliminarUsuario()" data-bs-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

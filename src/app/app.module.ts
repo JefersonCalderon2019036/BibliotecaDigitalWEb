@@ -19,6 +19,9 @@ import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment.prod';
+import { DetallesprestamosComponent } from './componetes/detallesprestamos/detallesprestamos.component';
+import { PrestamosComponent } from './componetes/prestamos/prestamos.component';
+import { CargasComponent } from './componetes/cargas/cargas.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { environment } from 'src/environments/environment.prod';
     UsuariosComponent,
     LibrosComponent,
     RevistasComponent,
-    MiperfilComponent
+    MiperfilComponent,
+    DetallesprestamosComponent,
+    PrestamosComponent,
+    CargasComponent
   ],
   imports: [
     BrowserModule,

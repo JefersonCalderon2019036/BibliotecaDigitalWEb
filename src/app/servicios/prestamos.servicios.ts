@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Prestamos } from '../modelos/prestamos.module';
 import { GLOBALSERVICIOS } from './globalservicios';
 
 @Injectable({
@@ -21,12 +22,26 @@ export class PrestamoServicio {
         return this._http.get(this.url+"ObtenerPrestamosPorUsuario/"+id, {headers: this.EncabezadoToken})
     }
 
-    putPrestarLibros(id: any): Observable<any>{
-        return this._http.get(this.url+"PrestarLibros/"+this.getIdUser()+"/"+id, {headers: this.EncabezadoToken})
+    getObtenerPrestamosPorUsuarioylibro(iduser: any, idlibro: any): Observable<any>{
+        return this._http.get(this.url+"ObtenerPrestamoPorUsuarioyLibro/"+iduser+"/"+idlibro, {headers: this.EncabezadoToken})
     }
 
-    getObtenerPrestamosPorUsuarioylibro(id: any): Observable<any>{
-        return this._http.get(this.url+"ObtenerPrestamoPorUsuarioyLibro/"+this.getIdUser()+"/"+id, {headers: this.EncabezadoToken})
+    getUnSoloPrestamo(id: any): Observable<any>{
+        return this._http.get(this.url+"ObtenerUnSoloPrestamo/"+id, {headers: this.EncabezadoToken})
+    }
+
+    getTodosLosPrestamos(): Observable<any>{
+        return this._http.get(this.url+"ObtenerTodosLosPrestamos",{headers: this.EncabezadoToken})
+    }
+
+    putPrestarLibro(datos: Prestamos):Observable<any>{
+        let params = JSON.stringify(datos);
+        return this._http.put(this.url+"PrestarLibros", params, {headers: this.EncabezadoToken})
+    }
+
+    PutDevolverLibro(datos: Prestamos): Observable<any>{
+        let params = JSON.stringify(datos);
+        return this._http.put(this.url+"devolverlibro", params, {headers: this.EncabezadoToken})
     }
 
     //funcion para obtener el token

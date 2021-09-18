@@ -1,0 +1,72 @@
+<div class="primary-background">
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="texto">
+        <h1 style="font-family: 'Lobster', cursive;">Biblioteca Digital // Detalles Prestamos</h1>
+        <hr style=" width: 90%; margin-left: 5%;">
+        <p>El misterio de la vida no es un problema a resolver, sino una realidad a experimentar (Duna, Frank Herbert)</p>
+    </div>
+    <div class="datos">
+        <br>
+            <img src={{detallesprestamo.imagen}} alt="">
+            <h3>
+                Nombre:
+                <input type="text" value={{detallesprestamo.nombre}} disabled>
+            </h3>
+            <h3>
+                Autor:
+                <input style="margin-left: 0.5%;" type="text" value={{detallesprestamo.autor}} disabled>
+            </h3>
+            <h3>
+                Edicion:
+                <input type="text" value={{detallesprestamo.edicion}} disabled>
+            </h3>
+            <h3>
+                Tipo de docuemento:
+                <input type="text" value={{detallesprestamo.tipo}} disabled>
+            </h3>
+            <h3>
+                Estado:
+                <input type="text" value={{detallesprestamo.estado}} disabled>
+            </h3>
+            <h3>
+                Fecha de petición:
+                <input type="text" value={{detallesprestamo.fechadesolicitud}} disabled>
+            </h3>
+            <h3 *ngIf="bloquesinfechadeentrega" styles="margin-bottom: 2%">
+                Fecha de devolución:
+                <input type="text" value={{detallesprestamo.fechadeentrega}} disabled>
+            </h3>
+        <br>
+    </div>
+    <br>
+</div>
+
+<div class="banner-secundario">
+    <br>
+  
+    <h3 style="margin-left: 5%; margin-bottom: 3%;">Redes Sociales</h3>
+  
+    <div class="redes-sociales">
+      <i class='bx bxl-facebook-circle bx-tada bx-lg' style='color:#ffffff'  ></i>
+      <i class='bx bxl-twitter bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-instagram-alt bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-linkedin-square bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-whatsapp bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-google-plus bx-tada bx-lg' style='color:#ffffff' ></i>
+    </div>
+  
+    <hr style="color: white; width: 60%; margin-left: 5%; margin-top: 3%; margin-bottom: 3%;">
+    <p style="color:white;">
+      <i class='bx bx-copyright' style='color:#ffffff' ></i>
+      2021, Biblioteca Digital Web, mantiene todos los derechos de autor pertenecientes a cada uno de los libros y revistas
+      integrados a esta biblioteca, este proyecto es un trabajo en coloboración con el Centro Educativo Técnico Laboral "KINAL" y
+      el alumno en curso Jefferson Calderon.
+    </p>
+    <hr style="width: 90%; margin-left: 5%;">
+    <div class="pie-de-pagina" style="color:white;">
+      <a>Términos de servicio</a>
+      <a>Política de privacidad</a>
+      <a>Seguridad de la cuenta</a>
+    </div>
+    <br>
+  </div>

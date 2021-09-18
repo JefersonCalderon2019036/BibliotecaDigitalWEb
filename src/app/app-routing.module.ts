@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CargasComponent } from './componetes/cargas/cargas.component';
 import { DetallesdocumentoComponent } from './componetes/detallesdocumento/detallesdocumento.component';
+import { DetallesprestamosComponent } from './componetes/detallesprestamos/detallesprestamos.component';
 import { InicioComponent } from './componetes/inicio/inicio.component';
 import { LibrosComponent } from './componetes/libros/libros.component';
 import { LoginComponent } from './componetes/login/login.component';
 import { MenudenavegacionComponent } from './componetes/menudenavegacion/menudenavegacion.component';
 import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
+import { PrestamosComponent } from './componetes/prestamos/prestamos.component';
 import { PrincipalComponent } from './componetes/principal/principal.component';
 import { RevistasComponent } from './componetes/revistas/revistas.component';
 import { UsuariosComponent } from './componetes/usuarios/usuarios.component';
@@ -20,6 +23,9 @@ const routes: Routes = [
   {path: "Libros", component: LibrosComponent},
   {path: "Revistas", component: RevistasComponent},
   {path: "MiPerfil", component: MiperfilComponent},
+  {path: "detallesprestamos/:idprestamo", component: DetallesprestamosComponent},
+  {path: "cargas", component: CargasComponent},
+  {path: "Prestamos", component: PrestamosComponent},
   {path: "**", component: InicioComponent}
 ];
 

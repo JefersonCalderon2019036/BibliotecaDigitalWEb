@@ -1,0 +1,134 @@
+.primary-background{
+    background-image: url(https://images.unsplash.com/photo-1484415063229-3d6335668531?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1388&q=80);
+    background-size: cover;
+}
+
+.listadelibros{
+    width: 80%;
+    margin-left:10%;
+    margin-bottom: 2%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 4px 5px 8px black;
+}
+
+.listadelibros h5{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: xx-large;
+    font-family: 'Lobster', cursive;
+}
+
+.overflow-auto{
+    width: 90%;
+    height: 615px;
+    margin-left: 5%;
+    border-radius: 5px;
+    overflow: auto;
+
+}
+
+.buttom-acciones{
+    width: 80%;
+    margin-left:10%;
+    display: flex;
+    background-color: white;
+    margin-top: 2%;
+    border-radius:10px;
+}
+
+.buttom-acciones h5{
+    display: flex;
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.buttom-acciones h5 .btn{
+    margin-left: 2%;
+}
+
+.overflow-auto::-webkit-scrollbar{
+    width: 7px;
+    background: rgba(73, 73, 73, 0.5);
+}
+
+.overflow-auto::-webkit-scrollbar-thumb{
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.offcanvas, .offcanvas-header, .offcanvas-body{
+    background-color: black;
+    color: white;
+}
+
+.btn-group{
+    width:100%;
+}
+.btn-group .btn{
+    width: 40%;
+}
+
+.offcanvas-body form img{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.banner-secundario{
+    background-color: black;
+}
+
+.redes-sociales{
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+.redes-sociales .bx{
+    margin-left: 2%;
+}
+
+.banner-secundario h3{
+    color: #a9a9a9;
+    text-transform: capitalize;
+}
+
+.banner-secundario p{
+    width: 40%; 
+    margin-left: 5%;
+    text-align: left;
+}
+
+.pie-de-pagina{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.pie-de-pagina a{
+    margin: auto;
+}
+
+.modal-body, .modal-header, .modal-footer{
+    background-color: black;
+    color: white
+}
+
+.modal-body form img{
+    width: 80%;
+    margin-left:10%
+}
+
+@media screen and (max-width: 980px){
+    .banner-secundario h3{
+        margin-bottom: 7%;
+    }
+
+    .banner-secundario p{
+        width: 80%;
+        margin-left: 5%;
+    }
+}

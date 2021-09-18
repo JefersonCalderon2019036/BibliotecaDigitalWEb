@@ -1,0 +1,90 @@
+.primary-background{
+    background-image: url(https://images.unsplash.com/photo-1509266272358-7701da638078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80);
+    background-size: cover;
+}
+
+.texto{
+    margin-top: 5%;
+    margin-bottom:5%;
+}
+
+.texto h1, hr, p{
+    color: white;
+    text-align: center;
+}
+
+.datos{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 4%;
+    background-color: rgba(10, 10, 10, 0.747);
+    box-shadow: 0px 0px 10px 0px white inset;
+    border-radius: 5px;
+}
+
+.datos img{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+    box-shadow: 0px 0px 5px 1px white;
+    border-radius: 10px;
+}
+
+.datos h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    color: white;
+}
+
+.datos h3 input{
+    width: 90%;
+}
+
+.banner-secundario{
+    background-color: black;
+}
+
+.redes-sociales{
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+.redes-sociales .bx{
+    margin-left: 2%;
+}
+
+.banner-secundario h3{
+    color: #a9a9a9;
+    text-transform: capitalize;
+}
+
+.banner-secundario p{
+    width: 40%; 
+    margin-left: 5%;
+    text-align: left;
+}
+
+.pie-de-pagina{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.pie-de-pagina a{
+    margin: auto;
+}
+
+@media screen and (max-width: 980px){
+
+    .banner-secundario h3{
+        margin-bottom: 7%;
+    }
+
+    .banner-secundario p{
+        width: 80%;
+        margin-left: 5%;
+    }
+}

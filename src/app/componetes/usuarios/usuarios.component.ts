@@ -140,36 +140,18 @@ export class UsuariosComponent implements OnInit {
       res => {
         this.datosvermas = res
         this.ModeloUsuario = res
-        this.HistorialDePrestamos(id)
       }, error => {
-        let textoerror = <any>error.mensaje
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: textoerror
+            text: <any>error.error.mensaje
           })
       }
     )
   }
 
-  HistorialDePrestamos(id: any){
-    this._PrestamoServicio.getObtenerPrestamosPorUsuario(id).subscribe(
-      res =>{
-        this.datosprestamosuser = res
-      }, error => {
-        let textoerror = <any>error.mensaje
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: textoerror,
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    )
-  }
-
-  EliminarUsuario(id: any){
+  EliminarUsuario(){
+    let id = this.ModeloUsuario._id
     Swal.fire({
       title: '¿Eliminar?',
       text: "Seguro que desea eliminar este usuario",
@@ -206,16 +188,21 @@ export class UsuariosComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         })
+        this.getUsuariosAscendentes()
       }, error => {
         Swal.fire({
           position: 'top-end',
           icon: 'error',
-          title: <any>error.mensaje,
+          title: <any>error.error.mensaje,
           showConfirmButton: false,
           timer: 2000
         })
       }
     )
+  }
+
+  VerMasPrestamo(id: any){
+    this._router.navigate(['/detallesdocumento',id])
   }
 }
 

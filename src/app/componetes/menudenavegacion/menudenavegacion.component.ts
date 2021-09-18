@@ -56,9 +56,8 @@ export class MenudenavegacionComponent implements OnInit {
   }
 
   Cerrarsesion(){
-    localStorage.setItem('token',"" );
-    localStorage.setItem('username', "")
-    localStorage.setItem('rol', "")
+    localStorage.clear()
+    this._router.navigate(['/']);
     Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -66,6 +65,5 @@ export class MenudenavegacionComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
-    this._router.navigate(['/inicio']);
   }
 }

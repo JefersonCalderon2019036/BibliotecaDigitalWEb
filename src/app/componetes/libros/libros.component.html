@@ -1,1 +1,321 @@
-<p>libros works!</p>
+<div class="primary-background">
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="buttom-acciones">
+        <h5>
+            Agregar Libros
+            <button type="button" class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#AgregarLibro">Agregar Libro</button>
+        </h5>
+        <h5>Búsqueda
+            <div class="container-fluid">
+                <form class="d-flex">
+                  <input class="form-control me-2" name="palabrasclaves" #palabrasclaves="ngModel" [(ngModel)]="ModeloLibros.palabrasclaves" type="search" placeholder="Search">
+                  <button class="btn btn-outline-success" (click)="BusquedaPorPalabrasClaves()" type="submit">Search</button>
+                </form>
+            </div>
+        </h5>
+    </div>
+    <br>
+        <div class="listadelibros">
+            <br>
+            <h5>Biblioteca Digital // Listado De Libros existentes</h5>
+            <div class="overflow-auto" *ngIf="bloqueodelibros">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Código de verificación</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Copias</th>
+                        <th scope="col">Disponibles</th>
+                        <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let TLL of TodosLosLibrosDatos">
+                        <th scope="row">{{TLL._id}}</th>
+                        <td>{{TLL.nombre}}</td>
+                        <td>{{TLL.autor}}</td>
+                        <td>{{TLL.copias}}</td>
+                        <td>{{TLL.Dispobles}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" (click)="vermas(TLL._id)"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
+                                <button type="button" (click)="vermas(TLL._id)" data-bs-toggle="offcanvas" data-bs-target="#EditarLibro" class="btn btn-warning">Editar</button>
+                                <button type="button" (click)="vermas(TLL._id)" data-bs-toggle="offcanvas" data-bs-target="#vermas" class="btn btn-success">Ver más</button>
+                            </div>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="overflow-auto" *ngIf="bloqueodelibros2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Código de verificación</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Copias</th>
+                        <th scope="col">Disponibles</th>
+                        <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let TLL of LibrosEncontrados">
+                        <th scope="row">{{TLL._id}}</th>
+                        <td>{{TLL.nombre}}</td>
+                        <td>{{TLL.autor}}</td>
+                        <td>{{TLL.copias}}</td>
+                        <td>{{TLL.Dispobles}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" (click)="vermas(TLL._id)"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
+                                <button type="button" (click)="vermas(TLL._id)" data-bs-toggle="offcanvas" data-bs-target="#EditarLibro" class="btn btn-warning">Editar</button>
+                                <button type="button" (click)="vermas(TLL._id)" data-bs-toggle="offcanvas" data-bs-target="#vermas" class="btn btn-success">Ver más</button>
+                            </div>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+        </div>
+    <br>
+</div>
+
+<div class="banner-secundario">
+    <br>
+  
+    <h3 style="margin-left: 5%; margin-bottom: 3%;">Redes Sociales</h3>
+  
+    <div class="redes-sociales">
+      <i class='bx bxl-facebook-circle bx-tada bx-lg' style='color:#ffffff'  ></i>
+      <i class='bx bxl-twitter bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-instagram-alt bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-linkedin-square bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-whatsapp bx-tada bx-lg' style='color:#ffffff' ></i>
+      <i class='bx bxl-google-plus bx-tada bx-lg' style='color:#ffffff' ></i>
+    </div>
+  
+    <hr style="color: white; width: 60%; margin-left: 5%; margin-top: 3%; margin-bottom: 3%;">
+    <p style="color:white;">
+      <i class='bx bx-copyright' style='color:#ffffff' ></i>
+      2021, Biblioteca Digital Web, mantiene todos los derechos de autor pertenecientes a cada uno de los libros y revistas
+      integrados a esta biblioteca, este proyecto es un trabajo en coloboración con el Centro Educativo Técnico Laboral "KINAL" y
+      el alumno en curso Jefferson Calderon.
+    </p>
+    <hr style="width: 90%; margin-left: 5%;">
+    <div class="pie-de-pagina" style="color:white;">
+      <a>Términos de servicio</a>
+      <a>Política de privacidad</a>
+      <a>Seguridad de la cuenta</a>
+    </div>
+    <br>
+  </div>
+  
+<!-- offcanvas derecha agregar libro-->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="AgregarLibro" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">Agregar Libro</h5>
+      <i class='bx bxs-exit bx-md bx-tada' styles="color: white" data-bs-dismiss="offcanvas" aria-label="Close"></i>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+              <label class="form-label">Imagen</label>
+              <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloLibros.imagen" class="form-control" placeholder="Ingresa la url de la imagen">
+              <div class="form-text">Para poder ingresarle una imagen a un nuevo producto se necesita que sea una url.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloLibros.nombre" class="form-control" placeholder="Ingresa el nombre del libro">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Autor</label>
+                <input type="text" name="autor" #autor="ngModel" [(ngModel)]="ModeloLibros.autor"  class="form-control" placeholder="Ingresa el nombre de autor">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Edición</label>
+                <input type="text" name="edicion" #edicion="ngModel" [(ngModel)]="ModeloLibros.edicion" class="form-control" placeholder="Ingresa la edición">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" name="descripcion"  maxlength="500"  #descripcion="ngModel" [(ngModel)]="ModeloLibros.descripcion" class="form-control" placeholder="Ingresa la descripción">
+                <div class="form-text">Solo le puedes dar una descripción máxima de 500 letras.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Temas</label>
+                <input type="text" name="Temas" #Temas="ngModel" [(ngModel)]="ModeloLibros.Temas" class="form-control" placeholder="Ingresa los temas">
+                <div class="form-text">Para poder agregar los temas, agrega el nombre del tema de seguido de una coma, un espacio y el siguiente tema.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Palabras Claves</label>
+                <input type="text" name="palabrasclaves" #palabrasclaves="ngModel" [(ngModel)]="ModeloLibros.palabrasclaves" class="form-control" placeholder="Ingresa los temas">
+                <div class="form-text">Para poder agregar las palabras claves, agrega la palabra clave de seguido de una coma, un espacio y la siguiente palabra clave.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Copias</label>
+                <input type="Number" name="copias" #copias="ngModel" [(ngModel)]="ModeloLibros.copias" class="form-control" placeholder="Ingresa la cantidad de copias">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Acciones</label>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="offcanvas" aria-label="Close" (click)="AgregarLibro()">Agregar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <!-- offcanvas izquierda agregar libro-->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="EditarLibro" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Libro</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+              <label class="form-label">Imagen</label>
+              <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ModeloLibros.imagen" class="form-control" placeholder="Ingresa la url de la imagen">
+              <div class="form-text">Para poder ingresarle una imagen a un nuevo producto se necesita que sea una url.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloLibros.nombre" class="form-control" placeholder="Ingresa el nombre del libro">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Autor</label>
+                <input type="text" name="autor" #autor="ngModel" [(ngModel)]="ModeloLibros.autor"  class="form-control" placeholder="Ingresa el nombre de autor">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Edición</label>
+                <input type="text" name="edicion" #edicion="ngModel" [(ngModel)]="ModeloLibros.edicion" class="form-control" placeholder="Ingresa la edición">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" maxlength="500"  name="descripcion" #descripcion="ngModel" [(ngModel)]="ModeloLibros.descripcion" class="form-control" placeholder="Ingresa la descripción">
+                <div class="form-text">Solo le puedes dar una descripción máxima de 500 letras.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Temas</label>
+                <input type="text" name="Temas" #Temas="ngModel" [(ngModel)]="ModeloLibros.Temas" class="form-control" placeholder="Ingresa los temas">
+                <div class="form-text">Para poder agregar los temas, agrega el nombre del tema de seguido de una coma, un espacio y el siguiente tema.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Palabras Claves</label>
+                <input type="text" name="palabrasclaves" #palabrasclaves="ngModel" [(ngModel)]="ModeloLibros.palabrasclaves" class="form-control" placeholder="Ingresa los temas">
+                <div class="form-text">Para poder agregar las palabras claves, agrega la palabra clave de seguido de una coma, un espacio y la siguiente palabra clave.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Copias</label>
+                <input type="Number" name="copias" #copias="ngModel" [(ngModel)]="ModeloLibros.copias" class="form-control" placeholder="Ingresa la cantidad de copias">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Acciones</label>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="offcanvas" aria-label="Close" (click)="EditarLibro()">Actualizar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="vermas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">Ver más</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <img src={{this.ModeloLibros.imagen}} alt="">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloLibros.nombre" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Autor</label>
+                <input type="text" name="autor" #autor="ngModel" [(ngModel)]="ModeloLibros.autor"  class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Edición</label>
+                <input type="text" name="edicion" #edicion="ngModel" [(ngModel)]="ModeloLibros.edicion" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="ModeloLibros.descripcion" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Temas</label>
+                <input type="text" name="Temas" #Temas="ngModel" [(ngModel)]="ModeloLibros.Temas" class="form-control" disabled>
+             </div>
+            <div class="mb-3">
+                <label class="form-label">Palabras Claves</label>
+                <input type="text" name="palabrasclaves" #palabrasclaves="ngModel" [(ngModel)]="ModeloLibros.palabrasclaves" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Copias</label>
+                <input type="Number" name="copias" #copias="ngModel" [(ngModel)]="ModeloLibros.copias" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dispobles</label>
+                <input type="Number" name="Dispobles" #Dispobles="ngModel" [(ngModel)]="ModeloLibros.Dispobles" class="form-control"disabled>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <img src={{this.ModeloLibros.imagen}} alt="">
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ModeloLibros.nombre" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Autor</label>
+                    <input type="text" name="autor" #autor="ngModel" [(ngModel)]="ModeloLibros.autor"  class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Edición</label>
+                    <input type="text" name="edicion" #edicion="ngModel" [(ngModel)]="ModeloLibros.edicion" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="ModeloLibros.descripcion" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Temas</label>
+                    <input type="text" name="Temas" #Temas="ngModel" [(ngModel)]="ModeloLibros.Temas" class="form-control" disabled>
+                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Palabras Claves</label>
+                    <input type="text" name="palabrasclaves" #palabrasclaves="ngModel" [(ngModel)]="ModeloLibros.palabrasclaves" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Copias</label>
+                    <input type="Number" name="copias" #copias="ngModel" [(ngModel)]="ModeloLibros.copias" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dispobles</label>
+                    <input type="Number" name="Dispobles" #Dispobles="ngModel" [(ngModel)]="ModeloLibros.Dispobles" class="form-control"disabled>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="Eliminar()" data-bs-dismiss="modal">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>

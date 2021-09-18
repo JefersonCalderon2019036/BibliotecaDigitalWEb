@@ -1,0 +1,56 @@
+.primary-background{
+    background-image: url(https://images.unsplash.com/photo-1561657819-51c0511e35ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80)
+}
+
+.contendor-de-datos h5{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: xx-large;
+    font-family: 'Lobster', cursive;
+    margin-bottom: 2%;
+}
+
+.contenedor-acciones{
+    width: 90%;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-top: 2%;
+    background-color: rgb(255, 245, 245);
+}
+
+.contenedor-acciones h5{
+    display: flex;
+    width: 30%;
+    margin-left: 2%;
+}
+
+.form-select{
+    width: 40%;
+    margin-left: 2%;
+    border-color: black;
+}
+
+.contendor-de-datos{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    background-color: rgb(255, 245, 245);
+}
+
+.overflow-auto{
+    width: 90%;
+    height: 615px;
+    margin-left: 5%;
+    overflow: auto;
+}
+
+.overflow-auto::-webkit-scrollbar{
+    width: 7px;
+    background: rgba(73, 73, 73, 0.5);
+}
+
+.overflow-auto::-webkit-scrollbar-thumb{
+    background: #ff9d00;
+    border-radius: 5px;
+}

@@ -1,29 +1,34 @@
 .background{
-    background-color: black;
+    background-image: url(https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);
 }
 
 .card-img-top{
-    margin-top: 25%;
-    width: 120%;
+    margin-top: 5%;
+    width: 80%;
+    height: 600px;
     border-radius: 5px;
     border-color: black;
-    transform:rotate(-38deg);
-    -ms-transform:rotate(-38deg); /* IE 9 */
-    -webkit-transform:rotate(-38deg);
+    border-radius: 10px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.63);
 }
 
 .container{
+    margin-top: 5%;
     margin-bottom: 8%;
+    background-color:white;
+    height: 675px;
+    border-radius: 10px;
 }
+
 .datos{
-    margin-top: 25%;
+    margin-top: 20%;
     margin-left: -20%;
     font-family: 'Lobster', cursive;
     position: relative;
 }
 
 .datos h5 a{
-    color:white;
+    color:black;
 }
 
 .datos h5{
@@ -36,10 +41,61 @@
     display: flex;
 }
 
+.banner-secundario{
+    background-color: black;
+}
+
+.redes-sociales{
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+.redes-sociales .bx{
+    margin-left: 2%;
+}
+
+.banner-secundario h3{
+    color: #a9a9a9;
+    text-transform: capitalize;
+}
+
+.banner-secundario p{
+    width: 40%; 
+    margin-left: 5%;
+    text-align: left;
+}
+
+.pie-de-pagina{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.pie-de-pagina a{
+    margin: auto;
+}
+
+.btn-group, .btn{
+    margin-top: 2%;
+    width: 90%;
+}
+
 @media screen and (max-width: 980px){
+    .banner-secundario h3{
+        margin-bottom: 7%;
+    }
+
+    .banner-secundario p{
+        width: 80%;
+        margin-left: 5%;
+    }
+
     .row{
         display: inline;
+        margin-bottom: 2%;
     }
+
     .datos{
         margin-top: 25%;
         margin-left: 5%;
@@ -48,5 +104,19 @@
     }
     .card-img-top{
         width:100%;
+    }
+
+    .datos{
+        margin-top: 5%;
+    }
+
+    .datos h5{
+        font-size: large;
+    }
+
+    .card-img-top{
+        margin-top: 10%;
+        width: 80%;
+        height: 200px;
     }
 }
