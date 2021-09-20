@@ -30,32 +30,38 @@
     <br>
 </div>
 
-<div class="background-3" *ngIf="bloqueprestamos">
+<div class="background-3">
   <br>
-  <div class="texto">
-    <h1 style="font-family: 'Lobster', cursive; color: black;">Biblioteca Digital // Mis Prestamos</h1>
-    <hr style=" width: 90%; margin-left: 5%;">
-    <p>El misterio de la vida no es un problema a resolver, sino una realidad a experimentar (Duna, Frank Herbert)</p>
-  </div>
+    <div class="texto">
+      <h1 style="font-family: 'Lobster', cursive; color: black;">Biblioteca Digital // Mis Prestamos</h1>
+      <hr style=" width: 90%; margin-left: 5%;">
+      <p>El misterio de la vida no es un problema a resolver, sino una realidad a experimentar (Duna, Frank Herbert)</p>
+    </div>
   <br>
 
-  <div class="scroll">
+  <select class="form-select" [(ngModel)]="datos" (change)="TodosMisPrestamos(MiPerfilDatos.carnet)">
+    <option value="Todos">Todos</option>
+    <option value="Prestados">Prestados</option>
+    <option value="Devueltos">Devueltos</option>
+  </select>
+
+  <div class="scroll" *ngIf="bloqueprestamos">
     <div class="container">
       <div class="row">
-        <div class="col" *ngFor="let TLR of MisPrestamosDatos">
+        <div class="col" *ngFor="let MisPrestamosDatos of MisPrestamosDatos">
           <div class="card" >
-              <img src={{TLR.imagen}} class="card-img-top" width="60" height="250">
+              <img src={{MisPrestamosDatos.imagen}} class="card-img-top" width="60" height="250">
               <div class="card-body">
-                  <h5 class="card-title">Nombre: {{TLR.nombre}}</h5>
-                  <h5 class="card-title">Autor: {{TLR.autor}}</h5>
-                  <button class="btn btn-primary" type="button" (click)="VerMasPrestamo(TLR._id)" >Ver más</button>
+                  <h5 class="card-title">Nombre: {{MisPrestamosDatos.nombre}}</h5>
+                  <h5 class="card-title">Autor: {{MisPrestamosDatos.autor}}</h5>
+                  <button class="btn btn-primary" type="button" (click)="VerMasPrestamo(MisPrestamosDatos._id)">Ver más</button>
               </div>
             </div>
         </div>
       </div>
     </div>
   </div>
-  <br>
+</div>
 
 <div class="banner-secundario">
   <br>

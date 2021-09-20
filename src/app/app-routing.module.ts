@@ -8,6 +8,7 @@ import { LibrosComponent } from './componetes/libros/libros.component';
 import { LoginComponent } from './componetes/login/login.component';
 import { MenudenavegacionComponent } from './componetes/menudenavegacion/menudenavegacion.component';
 import { MiperfilComponent } from './componetes/miperfil/miperfil.component';
+import { NavegacionAdminComponent } from './componetes/navegacion-admin/navegacion-admin.component';
 import { PrestamosComponent } from './componetes/prestamos/prestamos.component';
 import { PrincipalComponent } from './componetes/principal/principal.component';
 import { RevistasComponent } from './componetes/revistas/revistas.component';
@@ -23,9 +24,10 @@ const routes: Routes = [
   {path: "Libros", component: LibrosComponent},
   {path: "Revistas", component: RevistasComponent},
   {path: "MiPerfil", component: MiperfilComponent},
-  {path: "detallesprestamos/:idprestamo", component: DetallesprestamosComponent},
+  {path: "detallesprestamos/:idprestamo/:carnet", component: DetallesprestamosComponent},
   {path: "cargas", component: CargasComponent},
   {path: "Prestamos", component: PrestamosComponent},
+  {path: "navegacion-admin", component: NavegacionAdminComponent},
   {path: "**", component: InicioComponent}
 ];
 

@@ -36,6 +36,7 @@
                 Fecha de devolución:
                 <input type="text" value={{detallesprestamo.fechadeentrega}} disabled>
             </h3>
+            <button *ngIf="bloqueo" (click)="PutDeVolverLibro()" type="button" style="margin-top: 2%; margin-left: 15%; margin-bottom: 2%; width: 70%;" class="btn btn-danger">Devolver Documento</button>
         <br>
     </div>
     <br>

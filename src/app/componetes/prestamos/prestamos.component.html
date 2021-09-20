@@ -1,16 +1,35 @@
 <div class="primary-background">
     <app-menudenavegacion></app-menudenavegacion>
     <div class="contenedor-acciones">
-        <br>
             <h5>
                 Orden de la tabla:
-                <select class="form-select">
-                    <option>Todos</option>
-                    <option>Prestados</option>
-                    <option>Devueltos</option>
+                <select class="form-select" [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+                    <option value="Todos">Todos</option>
+                    <option value="Prestados">Prestados</option>
+                    <option value="Devueltos">Devueltos</option>
                 </select>
             </h5>
-        <br>
+            
+            <h5>
+              Carnet:
+              <select class="form-select" name="iduser" #iduser="ngModel" [(ngModel)]="ModeloPrestamos.iduser" (change)="BuscarPrestamosUsuario()">
+                <option value="No filtrar">No filtrar</option>
+                <option *ngFor="let datosusuario of datosusuario " value={{datosusuario.carnet}}>Carnet: {{datosusuario.carnet}}, Nombre: {{datosusuario.nombre}} {{datosusuario.apellido}}</option>
+              </select>
+          </h5>
+          <h5>
+            Estado:
+            <select class="form-select" name="estado" #estado="ngModel" [(ngModel)]="ModeloPrestamos.estado" (change)="BuscarPrestamosUsuario()">
+              <option value="Todos">Todos</option>
+              <option value="Prestados">Prestados</option>
+              <option value="Devueltos">Devueltos</option>
+            </select>
+          </h5>
+
+            <h5>
+              Agregar
+              <button type="button" style="width: 40%;margin-left: 5%;" (click)="GetTodosLosUsuario()" (click)="GetLibrosServices()" class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightAgregarPrestamo">Agregar</button>
+            </h5>
     </div>
     <br>
     
@@ -18,37 +37,145 @@
         <h5>Biblioteca Digital // Listado De Prestamos</h5>
 
         <div class="overflow-auto">
-            <table class="table">
+            <table class="table" *ngIf="BloqueoPrestamosDES">
                 <thead>
                   <tr>
                     <th scope="col">Código de verificación</th>
-                    <th scope="col">Código de usuarios</th>
-                    <th scope="col">Código de libro</th>
+                    <th scope="col">Carnet</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Fecha del prestación</th>
-                    <th scope="col">Fecha del devolución</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                  <tr *ngFor="let DatosPrestamosDes of DatosPrestamosActivosASC">
+                    <th scope="row">{{DatosPrestamosDes._id}}</th>
+                    <td>{{DatosPrestamosDes.iduser}}</td>
+                    <td>{{DatosPrestamosDes.nombre}}</td>
+                    <td>{{DatosPrestamosDes.autor}}</td>
+                    <td>{{DatosPrestamosDes.tipo}}</td>
+                    <td>{{DatosPrestamosDes.estado}}</td>
+                    <td>{{DatosPrestamosDes.fechadesolicitud}}</td>
                     <td>
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-warning">Editar</button>
-                            <button type="button" class="btn btn-success">Ver más</button>
-                        </div>
+                      <button type="button" class="btn btn-success" (click)="VerMas(DatosPrestamosDes._id,DatosPrestamosDes.iduser )">Ver más</button>
                     </td>
                   </tr>
                 </tbody>
-              </table>
+          </table>
+
+          <table class="table" *ngIf="BloqueoPrestamosTodos">
+            <thead>
+              <tr>
+                <th scope="col">Código de verificación</th>
+                <th scope="col">Carnet</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha del prestación</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let DatosPrestamosDes of DatoTodosLosPrestamos">
+                <th scope="row">{{DatosPrestamosDes._id}}</th>
+                <td>{{DatosPrestamosDes.iduser}}</td>
+                <td>{{DatosPrestamosDes.nombre}}</td>
+                <td>{{DatosPrestamosDes.autor}}</td>
+                <td>{{DatosPrestamosDes.tipo}}</td>
+                <td>{{DatosPrestamosDes.estado}}</td>
+                <td>{{DatosPrestamosDes.fechadesolicitud}}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="VerMas(DatosPrestamosDes._id,DatosPrestamosDes.iduser )">Ver más</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table" *ngIf="BloqueoPrestamosInactivos">
+            <thead>
+              <tr>
+                <th scope="col">Código de verificación</th>
+                <th scope="col">Carnet</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha del prestación</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let DatosPrestamosDes of DatosPrestamosDevueltos">
+                <th scope="row">{{DatosPrestamosDes._id}}</th>
+                <td>{{DatosPrestamosDes.iduser}}</td>
+                <td>{{DatosPrestamosDes.nombre}}</td>
+                <td>{{DatosPrestamosDes.autor}}</td>
+                <td>{{DatosPrestamosDes.tipo}}</td>
+                <td>{{DatosPrestamosDes.estado}}</td>
+                <td>{{DatosPrestamosDes.fechadesolicitud}}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="VerMas(DatosPrestamosDes._id,DatosPrestamosDes.iduser )">Ver más</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table" *ngIf="BloqueBusquedaUsuarioPrestamos">
+            <thead>
+              <tr>
+                <th scope="col">Código de verificación</th>
+                <th scope="col">Carnet</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha del prestación</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let DatosPrestamosDes of datosusuarioprestamo">
+                <th scope="row">{{DatosPrestamosDes._id}}</th>
+                <td>{{DatosPrestamosDes.iduser}}</td>
+                <td>{{DatosPrestamosDes.nombre}}</td>
+                <td>{{DatosPrestamosDes.autor}}</td>
+                <td>{{DatosPrestamosDes.tipo}}</td>
+                <td>{{DatosPrestamosDes.estado}}</td>
+                <td>{{DatosPrestamosDes.fechadesolicitud}}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="VerMas(DatosPrestamosDes._id,DatosPrestamosDes.iduser )">Ver más</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
     </div>
-
     <br>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightAgregarPrestamo" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Agregar Prestamo</h5>
+    <i class='bx bxs-exit bx-md' style='color:#ffffff' data-bs-dismiss="offcanvas" aria-label="Close" ></i>
+  </div>
+  <div class="offcanvas-body">
+    <h5>
+      Carnet de usuario:
+    </h5>
+    <select class="form-select" name="iduser" #iduser="ngModel" [(ngModel)]="ModeloPrestamos.iduser">
+      <option *ngFor="let datosusuario of datosusuario " value={{datosusuario.carnet}}>Carnet: {{datosusuario.carnet}}, Nombre: {{datosusuario.nombre}} {{datosusuario.apellido}}</option>
+    </select>
+    <h5>
+      Documentos:
+    </h5>
+    <select class="form-select" name="idlibro" #idlibro="ngModel" [(ngModel)]="ModeloPrestamos.idlibro">
+      <option *ngFor="let datosdocumentos of datosdocumentos " value={{datosdocumentos._id}}>{{datosdocumentos.nombre}}, {{datosdocumentos.autor}}, {{datosdocumentos.edicion}}</option>
+    </select>
+
+    <button type="button" class="btn btn-success" data-bs-dismiss="offcanvas" aria-label="Close"  (click)="PutPrestarDocumento()">Crear Prestamo</button>
+  </div>
 </div>

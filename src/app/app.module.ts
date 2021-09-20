@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment.prod';
 import { DetallesprestamosComponent } from './componetes/detallesprestamos/detallesprestamos.component';
 import { PrestamosComponent } from './componetes/prestamos/prestamos.component';
 import { CargasComponent } from './componetes/cargas/cargas.component';
+import { NavegacionAdminComponent } from './componetes/navegacion-admin/navegacion-admin.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CargasComponent } from './componetes/cargas/cargas.component';
     MiperfilComponent,
     DetallesprestamosComponent,
     PrestamosComponent,
-    CargasComponent
+    CargasComponent,
+    NavegacionAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class MenudenavegacionComponent implements OnInit {
   verificaciondeltoken: any;
   verificaciondeltoken2: any;
   verificacionbloqueorol: any;
+  verificacionbloqueorol2: any;
 
 
   constructor(
@@ -50,8 +51,17 @@ export class MenudenavegacionComponent implements OnInit {
   VerificaciondelRol(){
     if(this.rol == "admin"){
       this.verificacionbloqueorol = true;
-    }else{
+      this.verificacionbloqueorol2 = true;
+    }
+
+    if(this.rol == "estudiante"){
       this.verificacionbloqueorol = false;
+      this.verificacionbloqueorol2 = false;
+    }
+
+    if(this.rol == "bibliotecario"){
+      this.verificacionbloqueorol = false;
+      this.verificacionbloqueorol2 = true;
     }
   }
 

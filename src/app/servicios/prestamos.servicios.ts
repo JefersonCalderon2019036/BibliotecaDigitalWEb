@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Prestamos } from '../modelos/prestamos.module';
+import { Usuario } from '../modelos/usuario.module';
 import { GLOBALSERVICIOS } from './globalservicios';
 
 @Injectable({
@@ -20,6 +21,14 @@ export class PrestamoServicio {
 
     getObtenerPrestamosPorUsuario(id: any): Observable<any>{
         return this._http.get(this.url+"ObtenerPrestamosPorUsuario/"+id, {headers: this.EncabezadoToken})
+    }
+
+    getObtenerPDPorUsuairo(id: any): Observable<any>{
+        return this._http.get(this.url+"ObtenerPDPorUsuairo/"+id, {headers: this.EncabezadoToken})
+    }
+
+    GETHistorialDeUsuarios(datos: any): Observable<any>{
+        return this._http.get(this.url+"HistorialDeUsuarios/"+datos, {headers: this.EncabezadoToken})
     }
 
     getObtenerPrestamosPorUsuarioylibro(iduser: any, idlibro: any): Observable<any>{
@@ -42,6 +51,14 @@ export class PrestamoServicio {
     PutDevolverLibro(datos: Prestamos): Observable<any>{
         let params = JSON.stringify(datos);
         return this._http.put(this.url+"devolverlibro", params, {headers: this.EncabezadoToken})
+    }
+
+    GetObtenerPrestamosActivosDescendentes(): Observable<any>{
+        return this._http.get(this.url+"ObtenerPrestamosActivosDescendentes/"+this.getIdUser(), {headers: this.EncabezadoToken})
+    }
+
+    GetObtenerPrestamosInactivosDescendentes():Observable<any>{
+        return this._http.get(this.url+"ObtenerPrestamosInactivosDescendentes/"+this.getIdUser(), {headers: this.EncabezadoToken})
     }
 
     //funcion para obtener el token

@@ -41,7 +41,11 @@ export class LoginComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         })
-        this._router.navigate(['/principal'])
+        if(this.identidad.rol == "admin"){
+          this._router.navigate(["/navegacion-admin"])
+        }else{
+          this._router.navigate(['/principal'])
+        }
       },
       (error) => {
         console.log(<any>error);

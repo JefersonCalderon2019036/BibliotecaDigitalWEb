@@ -60,6 +60,10 @@ export class LibrosServices {
       return this._http.put(this.url+"EditarLibros/"+this.getIdUser()+"/"+id, params, {headers: this.EncabezadoToken})
     }
 
+    GetObtenerTodoLosDocumentos():Observable<any>{
+      return this._http.get(this.url+"ObtenerTodoLosDocumentos", {headers: this.EncabezadoToken})
+    }
+
     //funcion para obtener el token
     getToken(){
         var token2 = localStorage.getItem('token');
