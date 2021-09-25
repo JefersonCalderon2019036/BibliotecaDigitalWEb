@@ -1,3 +1,3 @@
 export var GLOBALSERVICIOS = {
-    url: 'http://localhost:3000/api/'
+    url: 'https://app-bibliotecadigitaldb.herokuapp.com/api/'
 }

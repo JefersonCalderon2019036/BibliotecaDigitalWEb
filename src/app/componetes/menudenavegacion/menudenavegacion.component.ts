@@ -63,6 +63,16 @@ export class MenudenavegacionComponent implements OnInit {
       this.verificacionbloqueorol = false;
       this.verificacionbloqueorol2 = true;
     }
+
+    if(this.rol == "undefined"){
+      this.verificacionbloqueorol = false;
+      this.verificacionbloqueorol2 = false;
+    }
+
+    if(this.rol == null){
+      this.verificacionbloqueorol = false;
+      this.verificacionbloqueorol2 = false;
+    }
   }
 
   Cerrarsesion(){
