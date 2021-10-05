@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 import { MenudenavegacionComponent } from './componetes/menudenavegacion/menudenavegacion.component';
 import { InicioComponent } from './componetes/inicio/inicio.component';
@@ -18,6 +19,7 @@ import { DetallesprestamosComponent } from './componetes/detallesprestamos/detal
 import { PrestamosComponent } from './componetes/prestamos/prestamos.component';
 import { CargasComponent } from './componetes/cargas/cargas.component';
 import { NavegacionAdminComponent } from './componetes/navegacion-admin/navegacion-admin.component';
+import { GraficasComponent } from './componetes/graficas/graficas.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import { NavegacionAdminComponent } from './componetes/navegacion-admin/navegaci
     DetallesprestamosComponent,
     PrestamosComponent,
     CargasComponent,
-    NavegacionAdminComponent
+    NavegacionAdminComponent,
+    GraficasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

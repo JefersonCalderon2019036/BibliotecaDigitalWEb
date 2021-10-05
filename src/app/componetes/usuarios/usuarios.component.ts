@@ -32,7 +32,7 @@ export class UsuariosComponent implements OnInit {
     private _PrestamoServicio: PrestamoServicio,
     private _router: Router
   ) {
-    this.ModeloUsuario = new Usuario("","",0,"","","","","","",0),
+    this.ModeloUsuario = new Usuario("","",0,"","","","","","",0,0),
     this.idMiUser = this._usuarioService.getIdUser();
    }
 

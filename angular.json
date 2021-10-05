@@ -13,7 +13,7 @@
           "style": "scss"
         },
         "@schematics/angular:application": {
-          "strict": true
+          "strict": false
         }
       },
       "root": "",
@@ -42,7 +42,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/boxicons/dist/boxicons.js"
+              "node_modules/boxicons/dist/boxicons.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {

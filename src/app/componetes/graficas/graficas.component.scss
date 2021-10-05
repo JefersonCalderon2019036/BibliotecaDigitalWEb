@@ -1,0 +1,58 @@
+.primary-backgraound{
+    background-image: url(https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.table22{
+    width: 95%;
+    height: 790px;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+}
+
+.list-group{
+    width: 20%;
+}
+
+.contenido{
+    width: 75%;
+    margin-left: 2.5;
+}
+
+.list-group-item:hover{
+    background-color: yellow;
+}
+
+.check-box{
+    margin-left: 5%;
+    display: flex;
+}
+
+.form-check{
+    margin-left: 5%;
+}
+
+.prestamosusuario h1{
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 2%;
+    font-family: 'Satisfy', cursive;
+    text-transform: capitalize;
+}
+
+.table{
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+    background-color: black;
+    color: white;
+}
+
+.btn{
+    margin-left: 45%;
+    width: 220px;
+}

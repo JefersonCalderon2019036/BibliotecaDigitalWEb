@@ -61,6 +61,10 @@ export class PrestamoServicio {
         return this._http.get(this.url+"ObtenerPrestamosInactivosDescendentes/"+this.getIdUser(), {headers: this.EncabezadoToken})
     }
 
+    getObtenerLosDocumentosMasPrestados():Observable<any>{
+        return this._http.get(this.url+"ObtenerLosDocumentosMasPrestados", {headers: this.EncabezadoToken})
+    }
+    
     //funcion para obtener el token
     getToken(){
         var token2 = localStorage.getItem('token');

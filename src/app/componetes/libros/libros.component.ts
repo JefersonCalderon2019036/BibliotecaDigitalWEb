@@ -19,7 +19,7 @@ export class LibrosComponent implements OnInit {
   constructor(
     public _LibrosServices: LibrosServices
   ) {
-    this.ModeloLibros = new Libros("","","","","","",0,0,[],[],"","","",0)
+    this.ModeloLibros = new Libros("","","","","","",0,0,[],[],"","","",0,0)
   }
 
   ngOnInit(): void {

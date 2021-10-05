@@ -10,5 +10,6 @@ export class Usuario {
     public contrasena: String,
     public rol: String,
     public librosprestados: Number,
+    public cantidaddedocuentosprestados: Number
   ){}
 }

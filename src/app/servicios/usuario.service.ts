@@ -62,6 +62,11 @@ export class UsuarioService {
     return this._http.put(this.url+"EditarUsuarioComoAdmin/"+this.getIdUser()+"/"+id,params, {headers: this.EncabezadoToken})
   }
 
+  //funcion para ver el usuario con mas prestaciones
+  getObtenerLosUsuairosConMasPrestaciones():Observable<any>{
+    return this._http.get(this.url+"ObtenerLosUsuairosConMasPrestaciones", {headers: this.EncabezadoToken})
+  }
+
   //funcion para obtener el token
   getToken(){
     var token2 = localStorage.getItem('token');

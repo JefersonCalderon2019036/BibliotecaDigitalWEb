@@ -1,0 +1,123 @@
+<div class="primary-backgraound">
+    <app-menudenavegacion></app-menudenavegacion>
+    <div class="table22">
+        <ul class="list-group">
+            <li (click)="cambio()" class="list-group-item">Usuarios con más prestaciones</li>
+            <li (click)="cambio()" class="list-group-item">Libros más prestados</li>
+        </ul>
+        <div class="contenido" *ngIf="bloqueousuario">
+            <div class="prestamosusuario">
+                <h1>Usuarios con más prestaciones</h1>
+                <div class="check-box">
+                  <div class="form-check">
+                    <input class="form-check-input" (click)="tableusuarioconprestaciones()"  type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Tabla
+                    </label>
+                  </div>
+                    <div class="form-check">
+                      <input class="form-check-input" (click)="graficausuarioprestaciones()" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        Gráficas
+                      </label>
+                    </div>
+                  <button type="button" class="btn btn-dark" *ngIf="bloqueotableusuario">
+                    <i class='bx bx-printer' style="margin-right: 2%;" (click)="ImprimirUsuariosPrestaciones()"></i>Imprimir
+                  </button>
+                </div>
+                <div class="tablecontenido" *ngIf="bloqueotableusuario">
+                    <table class="table" id="table-usuarios-prestacione">
+                        <thead>
+                          <tr>
+                            <th scope="col">Carnet</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Correo electronico</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Cantidad de prestados</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let dtu of datostableusuarios">
+                            <th scope="row">{{dtu.carnet}}</th>
+                            <td>{{dtu.nombre}}</td>
+                            <td>{{dtu.apellido}}</td>
+                            <td>{{dtu.correoelectronico}}</td>
+                            <td>{{dtu.rol}}</td>
+                            <td>{{dtu.cantidaddedocuentosprestados}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="contenidografica" *ngIf="bloqueograficasusuarios">
+                  <canvas baseChart
+                    chartType="pie"
+                    [data]="chartData"
+                    [colors]="chartColors"
+                    [labels]="chartLabels"
+                    [options]="chartOptions"
+                    [plugins]="chartPlugins"
+                    [legend]="chartLegend">
+                  </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="contenido" *ngIf="bloqueodocumentos">
+          <div class="prestamosusuario">
+              <h1>Usuarios con más prestaciones</h1>
+              <div class="check-box">
+                <div class="form-check">
+                  <input class="form-check-input" (click)="tablalibrosprestaciones()"  type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Tabla
+                  </label>
+                </div>
+                  <div class="form-check">
+                    <input class="form-check-input" (click)="graficalibrosprestaciones()" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Gráficas
+                    </label>
+                  </div>
+                <button type="button" class="btn btn-dark" *ngIf="bloqueotabledocumentos">
+                  <i class='bx bx-printer' style="margin-right: 2%;" (click)="ImprimirLibrosPrestaciones()"></i>Imprimir
+                </button>
+              </div>
+              <div class="tablecontenido" *ngIf="bloqueotabledocumentos">
+                  <table class="table" id="table-libros-prestaciones">
+                      <thead>
+                        <tr>
+                          <th scope="col">_id</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Autor</th>
+                          <th scope="col">Edición</th>
+                          <th scope="col">Tipo</th>
+                          <th scope="col">Cantidad de prestados</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dtu of datostablelibros">
+                          <th scope="row">{{dtu._id}}</th>
+                          <td>{{dtu.nombre}}</td>
+                          <td>{{dtu.autor}}</td>
+                          <td>{{dtu.edicion}}</td>
+                          <td>{{dtu.tipo}}</td>
+                          <td>{{dtu.cantidaddedocuentosprestados}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <div class="contenidografica" *ngIf="bloqueograficadocumentos">
+                <canvas baseChart
+                  chartType="pie"
+                  [data]="chartData"
+                  [colors]="chartColors"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [plugins]="chartPlugins"
+                  [legend]="chartLegend">
+                </canvas>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>

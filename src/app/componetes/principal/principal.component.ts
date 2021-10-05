@@ -25,7 +25,7 @@ export class PrincipalComponent implements OnInit {
     private _LibrosServices: LibrosServices,
     private _router: Router
   ) {
-    this.ModeloLibros = new Libros("","","","","","",0,0,[],[],"","","",0)
+    this.ModeloLibros = new Libros("","","","","","",0,0,[],[],"","","",0,0)
    }
 
   ngOnInit(): void {

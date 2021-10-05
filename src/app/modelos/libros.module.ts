@@ -13,6 +13,7 @@ export class Libros{
         public tipo: String,
         public frecuenciaactual: String,
         public ejemplares: String,
-        public vecesvisto: Number
+        public vecesvisto: Number,
+        public cantidaddedocuentosprestados: Number
     ){}
 }

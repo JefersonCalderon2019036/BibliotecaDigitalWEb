@@ -28,7 +28,7 @@ export class MiperfilComponent implements OnInit {
     private _router: Router
   ) {
     this.id = this._usuarioService.getIdUser(),
-    this.ModeloUsuario = new Usuario("","",0,"","","","","","",0)
+    this.ModeloUsuario = new Usuario("","",0,"","","","","","",0,0)
    }
 
   ngOnInit(): void {
